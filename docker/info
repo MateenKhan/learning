@@ -1,0 +1,27 @@
+The use of containers to deploy applications is called containerization.
+Fundamentally, a container is nothing but a running process,
+One of the most important aspects of container isolation is that each container interacts with its own, private filesystem; this filesystem is provided by a Docker image
+An image includes everything needed to run an application -- the code or binary, runtimes, dependencies, and any other filesystem objects required.
+
+
+
+
+
+sudo docker image build -t makjavaprogrammer/bulletinboard:1.0 .
+sudo docker container run --publish 8000:8080 --detach --name test makjavaprogrammer/bulletin-board:1.0
+docker container rm --force test
+
+docker stop <id>
+docker rm <id>
+
+
+kubectl apply -f bb.yaml 
+
+
+
+=================================================================
+kubectl run bulletinboard:1.0 --image=bulletinboard:1.0 --image-pull-policy=Never
+
+docker pull dtr/example_repo/example_image
+
+docker pull makjavaprogrammer/bulletin-board:1.0

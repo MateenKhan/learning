@@ -1,0 +1,20 @@
+helm create hello-world
+helm lint ./hello-world
+helm template ./helm
+helm install --name helm ./helm
+  export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services helm)
+  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+
+helm ls --all
+helm upgrade hello-world ./hello-world
+helm rollback hello-world 1
+helm delete --purge hello-world
+helm package ./hello-world
+helm repo index my-repo/ --url https://<username>.github.io/my-repo
+helm repo add my-repo https://my-pages.github.io/my-repo
+helm install my-repo/hello-world --name=hello-world
+export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=first-app,app.kubernetes.io/instance=first-app" -o jsonpath="{.items[0].metadata.name}")
+echo "Visit http://127.0.0.1:8080 to use your application"
+kubectl port-forward $POD_NAME 8080:80
+

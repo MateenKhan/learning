@@ -1,0 +1,22 @@
+create a spring boot app 
+https://spring.io/guides/gs/spring-boot-docker/
+create docker image and run
+NOTE : build image like below
+docker build image <username>/<imagename>:<tagname>
+==========================
+sudo docker image build -t makjavaprogrammer/bulletinboard:1.0 .
+sudo docker container run --publish 8000:8080 --detach --name test makjavaprogrammer/bulletin-board:1.0
+docker container rm --force test
+
+==========================
+
+push your image to docker hub
+
+
+deploy this docker image to kubernets
+==========================
+
+kubectl apply -f bb.yaml 
+==========================
+
+deploy this to kubernets using helm charts
